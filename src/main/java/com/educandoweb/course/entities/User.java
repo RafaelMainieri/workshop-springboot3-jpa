@@ -1,14 +1,19 @@
 package com.educandoweb.course.entities;
 
+import jakarta.persistence.*;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
-// Serializible é usado quando queremos que nossa classe seja transformada em cadeias de bites (trafegue na rede, gravado em arquivos, etc.)
-public class User implements Serializable {
+@Entity
+@Table(name="tb_user")
+public class User implements Serializable { // Serializible é usado quando queremos que nossa classe seja transformada em cadeias de bites (trafegue na rede, gravado em arquivos, etc.)
     @Serial
     private static final long serialVersionUID = 1L; // Número de série da classe (entidade)
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;
